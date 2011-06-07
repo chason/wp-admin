@@ -25,7 +25,10 @@ def get_details(location):
     wpconfig.close()
     return details
 
-def connect(database, dbuser, dbpass):
+def connect(database, dbuser, dbpass, prefix):
     db = MySQLdb.connect(user=dbuser, passwd=dbpass)
     c = db.cursor()
-    
+    sql = "SELECT option_name,option_value from {0}.{1}options where option_name='siteurl';".format(database,prefix)
+    try:
+	c.execute(sql) 
+    return c
