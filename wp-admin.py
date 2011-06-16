@@ -28,6 +28,7 @@ def get_details(location):
     wpconfig.close()
     return details
 
+<<<<<<< HEAD
 def dbconnect(details):
     db = MySQLdb.connect(user=details['DB_USER'], passwd=details['DB_PASSWORD'], host=details['DB_HOST'], db=details['DB_NAME'])
     c = db.cursor()
@@ -111,3 +112,12 @@ def delete_user(db, details, username):
     if some_left:
         delete_user(db, details, username)
 
+=======
+def connect(database, dbuser, dbpass, prefix):
+    db = MySQLdb.connect(user=dbuser, passwd=dbpass)
+    c = db.cursor()
+    sql = "SELECT option_name,option_value from {0}.{1}options where option_name='siteurl';".format(database,prefix)
+    try:
+	c.execute(sql) 
+    return c
+>>>>>>> 82454dd5c2aca9c81905c86cd5bd0190fa4922f0
