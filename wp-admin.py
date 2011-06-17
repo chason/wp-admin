@@ -93,7 +93,8 @@ class WPAdmin(object):
             Password: {passwd}
             Nicename: {name}
             Email: {email}
-            """.format(name=user.name, passwd=user.password, email=user.email))
+            """.format(name=user['name'], passwd=user['password'], 
+                    email=user['email']))
         
         return 0
 
