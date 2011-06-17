@@ -168,7 +168,12 @@ class WPAdmin(object):
             SELECT ID from {prefix}users WHERE user_login='{name}';
         """.format(prefix=details['table_prefix'], name=username)
         db.execute(uid_sql)
-        uid, = db.fetchone()
+        try:
+            uid, = db.fetchone()
+        except TypeError:
+            print("No user with username {0} found".format(username))
+            return 1
+
         uid = int(uid)
 
         users_sql = """
