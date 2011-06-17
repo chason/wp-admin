@@ -42,8 +42,8 @@ class WPAdmin(object):
         wpconfig = location + '/wp-config.php'
         try:
             wpconfig = open(wpconfig, 'r')
-        except IOError as e:
-            print("({0})".format(e))
+        except IOError, (errno, strerror)
+            print("({0}): {1}".format(errno, strerror))
 
         pattern = re.compile('''define\('(?P<name>[A-Za-z_0-9]+)',\s?'(?P<value>[^\']*)'\);''')
         pattern2 = re.compile('''\$table_prefix\s*=\s*'(?P<value>[^\']*)';''')
