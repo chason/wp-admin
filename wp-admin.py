@@ -42,7 +42,7 @@ class WPAdmin(object):
         wpconfig = location + '/wp-config.php'
         try:
             wpconfig = open(wpconfig, 'r')
-        except IOError, (errno, strerror)
+        except IOError, (errno, strerror):
             print("({0}): {1}".format(errno, strerror))
 
         pattern = re.compile('''define\('(?P<name>[A-Za-z_0-9]+)',\s?'(?P<value>[^\']*)'\);''')
