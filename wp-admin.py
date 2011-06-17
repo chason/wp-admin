@@ -229,8 +229,8 @@ class WPAdmin(object):
                     email=self.options.email)
             self.print_user_details(user)
         if self.options.del_user:
-            self.delete_user(db, details, self.options.user)
-            print("All users with username '{0}' successfully deleted.".format(self.options.user))
+            if not self.delete_user(db, details, self.options.user):
+                print("All users with username '{0}' successfully deleted.".format(self.options.user))
         
 def setup_parser():
     """
